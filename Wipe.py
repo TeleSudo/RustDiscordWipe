@@ -8,12 +8,12 @@ intents.members = True
 
 client = commands.Bot(command_prefix='!', intents=intents)
 
-WIPE_INTERVAL_DAYS = 5 #define WIPE_INTERVAL_DAYS here 
+WIPE_INTERVAL_DAYS = 1 #put wipe day here 
 next_wipe = datetime.datetime.now() + datetime.timedelta(days=WIPE_INTERVAL_DAYS)
 
 async def get_wipe_channel():
-    guild = client.get_guild(1067002770571399198) #put the channel you want to see your wipetime on it
-    channel = guild.get_channel(1067002770571399198) 
+    guild = client.get_guild()  #put channel id in guild
+    channel = guild.get_channel() #put channel id in guild
     return channel
 
 async def send_wipe_message():
@@ -22,8 +22,8 @@ async def send_wipe_message():
     days_left = time_left.days
     hours_left = time_left.seconds // 3600
     minutes_left = (time_left.seconds // 60) % 60
-    embed = discord.Embed(title="IranRust [2x] Server Wipe Counter", color=0x00ff00) #server name here 
-    embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/996016412055318628/996123444641013780/Untitled-1.png") #use your picture for thumbnail here
+    embed = discord.Embed(title="IranRust [2x] Server Wipe Counter", color=0x00ff00) #server name 
+    embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/996016412055318628/996123444641013780/Untitled-1.png") #your logo
     embed.add_field(name="Days Left", value=f"{days_left} days", inline=True)
     embed.add_field(name="Hours Left", value=f"{hours_left} hours", inline=True)
     embed.add_field(name="Minutes Left", value=f"{minutes_left} minutes", inline=True)
@@ -41,8 +41,8 @@ async def update_wipe_message():
         days_left = time_left.days
         hours_left = time_left.seconds // 3600
         minutes_left = (time_left.seconds // 60) % 60
-        embed = discord.Embed(title="IranRust [2x] Server Wipe Counter", color=0x00ff00) #server name here 
-        embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/996016412055318628/996123444641013780/Untitled-1.png") #use your picture for thumbnail here
+        embed = discord.Embed(title="IranRust [2x] Server Wipe Counter", color=0x00ff00) #server name 
+        embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/996016412055318628/996123444641013780/Untitled-1.png") #your logo
         embed.add_field(name="Days Left", value=f"{days_left} days", inline=True)
         embed.add_field(name="Hours Left", value=f"{hours_left} hours", inline=True)
         embed.add_field(name="Minutes Left", value=f"{minutes_left} minutes", inline=True)
@@ -66,6 +66,7 @@ async def main():
     client.loop.create_task(update_wipe_message())
     client.loop.create_task(update_status())
 
+    
 @client.event
 async def on_ready():
     print(f'Logged in as {client.user}')
@@ -77,4 +78,5 @@ async def on_ready():
     print('Wipe message updated')
 
 
-client.run('')
+
+client.run('') #put your discord token
