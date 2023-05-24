@@ -6,4 +6,4 @@ apt install python3
 apt install pip3
 pip3 install discord.py
 
-![alt text]([http://url/to/img.png](https://cdn.discordapp.com/attachments/1054396268148969554/1110902920754507868/pic.png))
+![WipeTime]([path/to/your/image.png](https://cdn.discordapp.com/attachments/1054396268148969554/1110902920754507868/pic.png))
